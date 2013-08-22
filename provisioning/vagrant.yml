@@ -1,5 +1,4 @@
 - hosts: vagrant
-  user: ${user}
   sudo: yes
   tasks:
   - name: ensure iptables is stopped for development

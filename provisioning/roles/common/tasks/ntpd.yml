@@ -1,4 +1,4 @@
 - name: ensure ntpd is at the latest version
-  yum: pkg=ntp state=latest
+  yum: name=ntp state=latest
   notify:
   - restart ntpd
