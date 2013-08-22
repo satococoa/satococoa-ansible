@@ -1,0 +1,5 @@
+- hosts: vagrant
+  sudo: yes
+  tasks:
+  - name: ensure iptables is stopped for development
+    service: name=iptables state=stopped

@@ -1,13 +1,4 @@
----
-- hosts: vagrant
-  sudo: yes
-  tasks:
-    - name: ensure iptables is stopped for development
-      service: name=iptables state=stopped
-    - name: ensure ntpd is at the latest version
-      yum: pkg=ntp state=latest
-      notify:
-      - restart ntpd
-  handlers:
-    - name: restart ntpd
-      service: name=ntpd state=restarted
+- include: vagrant.yml
+- include: common.yml
+# - include: webservers.yml
+# - include: dbservers.yml
