@@ -2,8 +2,6 @@
 - hosts: vagrant
   sudo: yes
   tasks:
-    - name: ensure yum updated
-      yum: name=* state=latest
     - name: ensure iptables is stopped for development
       service: name=iptables state=stopped
     - name: ensure ntpd is at the latest version
