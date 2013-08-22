@@ -11,7 +11,7 @@
     - regexp='.rbenv/bin:' line='export PATH="$HOME/.rbenv/bin:$PATH"'
     - regexp='rbenv init -' line='eval "$(rbenv init -)"'
   notify:
-  - source .bashrc
+    - source .bashrc
 
 - name: ensure ruby-build is installed
   sudo: no
@@ -41,5 +41,5 @@
   sudo: no
   shell: gem install bundler --no-ri --no-rdoc
   notify:
-  - rbenv rehash
+    - rbenv rehash
   when: check_bundler.stdout != "0"
