@@ -2,6 +2,7 @@
   connection: local
   vars:
     role: common
+    # ansible-playbook --extra-vars '{"roles":["common", "webservers", "dbservers"]}' ansible-directories.yml
   tasks:
   - name: create directories for ansible files.
     file: path={{ item }} state=directory
