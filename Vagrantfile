@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
   # information on available options.
 
   config.vm.provision :ansible do |ansible|
-    ansible.playbook = "provisioning/playbook.yml"
-    ansible.inventory_file = "provisioning/ansible_hosts"
+    ansible.playbook = "provisioning/site.yml"
+    ansible.inventory_file = "provisioning/development"
   end
 end
