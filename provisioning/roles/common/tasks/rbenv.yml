@@ -6,7 +6,7 @@
 
 - name: ensure .rbenv setting is in .bashrc
   sudo: no
-  lineinfile: dest=~/.bashrc {{item}}
+  lineinfile: dest=~/.bashrc {{ item }}
   with_items:
     - regexp='.rbenv/bin:' line='export PATH="$HOME/.rbenv/bin:$PATH"'
     - regexp='rbenv init -' line='eval "$(rbenv init -)"'
@@ -24,7 +24,7 @@
 
 - name: ensure ruby is installed
   sudo: no
-  shell: rbenv {{item}} {{ruby_version}}
+  shell: rbenv {{ item }} {{ ruby_version }}
   with_items:
     - install
     - global
