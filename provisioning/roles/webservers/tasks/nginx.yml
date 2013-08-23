@@ -4,11 +4,16 @@
     - restart nginx
 
 - name: ensure nginx is configured
-  template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf
+  template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf owner=root group=root
   notify:
     - reload nginx
 
-- name: ensure default page is configured
-  template: src=default.conf.j2 dest=/etc/nginx/conf.d/default.conf
+# - name: ensure default page is configured
+#   template: src=default.conf.j2 dest=/etc/nginx/conf.d/default.conf
+#   notify:
+#     - reload nginx
+
+- name: ensure default page is removed
+  file: path=/etc/nginx/conf.d/default.conf state=absent owner=root group=root
   notify:
     - reload nginx

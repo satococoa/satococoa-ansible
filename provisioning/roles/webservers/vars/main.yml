@@ -1,3 +1,5 @@
 nginx_real_ip_from:
   # - 10.0.0.0/8 # ELB
-nginx_status_allow: 192.168.33.0/24
+# nginx_status_allow: 192.168.33.0/24
+rails_app_name: rails_app
+rails_app_domain: _
