@@ -1,3 +1,4 @@
+- include: epel.yml
 - include: ntpd.yml
 - include: common-packages.yml
 - include: rbenv.yml
