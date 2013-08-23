@@ -10,8 +10,6 @@
   with_items:
     - regexp='.rbenv/bin:' line='export PATH="$HOME/.rbenv/bin:$PATH"'
     - regexp='rbenv init -' line='eval "$(rbenv init -)"'
-  notify:
-    - source .bashrc
 
 - name: ensure ruby-build is installed
   sudo: no
@@ -35,5 +33,3 @@
 - name: ensure bundler is installed
   sudo: no
   gem: name=bundler state=latest
-  notify:
-    - rbenv rehash
