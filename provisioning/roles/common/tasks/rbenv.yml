@@ -32,14 +32,8 @@
     - global
   when: current_ruby_version.stdout != ruby_version
 
-- name: check bundler is installed
-  sudo: no
-  shell: gem list | grep -q bundler; echo $?
-  register: check_bundler
-
 - name: ensure bundler is installed
   sudo: no
-  shell: gem install bundler --no-ri --no-rdoc
+  gem: name=bundler state=latest
   notify:
     - rbenv rehash
-  when: check_bundler.stdout != "0"
