@@ -54,5 +54,6 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "provisioning/site.yml"
     ansible.inventory_file = "provisioning/development"
     ansible.verbose = true
+    # ansible.extra_vars = {}
   end
 end
