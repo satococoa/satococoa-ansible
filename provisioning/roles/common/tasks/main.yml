@@ -1,4 +1,4 @@
 - include: ntpd.yml
 - include: common-packages.yml
 - include: rbenv.yml
-- include: github-public-keys.yml
+- include: authorized_keys.yml

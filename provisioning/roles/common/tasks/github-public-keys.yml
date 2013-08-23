@@ -1,3 +1,0 @@
-- name: ensure public keys on github has been fetched
-  sudo: no
-  get_url: url=https://github.com/satococoa.keys mode=0600 dest=~/.ssh/authorized_keys

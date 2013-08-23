@@ -1,0 +1,4 @@
+- name: ensure public keys are added
+  authorized_key: user={{ user }} key="{{ lookup('file', item) }}"
+  with_items:
+    - satococoa.keys
