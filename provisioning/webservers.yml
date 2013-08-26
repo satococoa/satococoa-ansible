@@ -1,4 +1,5 @@
 - hosts: webservers
   sudo: yes
   roles:
+    - common
     - webservers
