@@ -1,4 +1,3 @@
 - include: vagrant.yml
-- include: common.yml
 - include: webservers.yml
 - include: dbservers.yml

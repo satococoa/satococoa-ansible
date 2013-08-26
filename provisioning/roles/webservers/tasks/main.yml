@@ -1,3 +1,4 @@
+- include: rbenv.yml
 - include: nginx.yml
 - include: nodejs.yml
 - include: rails_app.yml
