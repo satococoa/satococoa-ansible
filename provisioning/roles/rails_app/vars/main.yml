@@ -1,0 +1,5 @@
+rails_app_name: rails_app
+rails_app_domain: _
+dbname: rails_app_production
+dbuser: rails
+dbpassword: password

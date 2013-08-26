@@ -49,14 +49,3 @@
   notify:
     - restart mysql
   tags: mysql
-
-- name: Create database
-  mysql_db: db=${dbname} state=present
-  tags: mysql
-
-- name: Create database user
-  mysql_user: name=${dbuser} password=${dbpassword} priv=${dbname}.*:ALL state=present host=${item}
-  with_items:
-    - localhost
-    - '%'
-  tags: mysql
