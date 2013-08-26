@@ -1,4 +1,4 @@
-- name: ensure rbenv is installed
+- name: ensure rbenv is at the latest version
   sudo: no
   git: repo=git://github.com/sstephenson/rbenv.git
        dest=~/.rbenv
@@ -13,7 +13,7 @@
     - regexp='rbenv init -' line='eval "$(rbenv init -)"'
   tags: rbenv
 
-- name: ensure ruby-build is installed
+- name: ensure ruby-build is at the latest version
   sudo: no
   git: repo=git://github.com/sstephenson/ruby-build.git
        dest=~/.rbenv/plugins/ruby-build
@@ -35,7 +35,7 @@
   when: current_ruby_version.stdout != ruby_version
   tags: rbenv
 
-- name: ensure bundler is installed
+- name: ensure bundler is at the latest version
   sudo: no
   gem: name=bundler state=latest
   tags: rbenv

@@ -1,3 +1,3 @@
-- name: ensure mysql-devel is the latest version
-  yum: name=mysql-devel state=latest
+- name: ensure mysql-devel is installed
+  yum: name=mysql-devel state=installed
   tags: mysql

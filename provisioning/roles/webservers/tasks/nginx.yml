@@ -1,5 +1,5 @@
 - name: ensure nginx is installed
-  yum: name=nginx state=latest
+  yum: name=nginx state=installed
   notify:
     - restart nginx
   tags: nginx
