@@ -1,7 +1,9 @@
 - name: ensure railsapp directory is created
   file: path=/var/www/${rails_app_name} state=directory mode=0775 owner=${user} group=nginx
+  tags: rails
 
 - name: ensure rails_app is configured
   template: src=railsapp.conf.j2 dest=/etc/nginx/conf.d/${rails_app_name}.conf owner=root group=root
   notify:
     - reload nginx
+  tags: rails

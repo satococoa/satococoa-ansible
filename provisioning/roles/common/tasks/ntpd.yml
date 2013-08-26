@@ -2,3 +2,4 @@
   yum: name=ntp state=latest
   notify:
     - restart ntpd
+  tags: ntpd

@@ -8,3 +8,4 @@
     - openssl-devel
     - zlib-devel
     - sqlite-devel
+  tags: common-packages

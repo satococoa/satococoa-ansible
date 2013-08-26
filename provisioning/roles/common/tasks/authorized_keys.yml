@@ -2,3 +2,4 @@
   authorized_key: user={{ user }} key="{{ lookup('file', item) }}"
   with_items:
     - satococoa.keys
+  tags: authorized_key
