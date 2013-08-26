@@ -1,13 +1,53 @@
-- name: be sure mysql-server is installed
-  yum: pkg=mysql-server state=installed
+- name: ensure mysql-shared-compat is installed
+  yum: name='ftp://ftp.iij.ad.jp/pub/db/mysql/Downloads/MySQL-5.6/MySQL-shared-compat-5.6.13-1.el6.x86_64.rpm' state=present
   tags: mysql
 
-- name: be sure mysqldb is installed
+- name: ensure mysql-shared is installed
+  yum: name='ftp://ftp.iij.ad.jp/pub/db/mysql/Downloads/MySQL-5.6/MySQL-shared-5.6.13-1.el6.x86_64.rpm' state=present
+  tags: mysql
+
+- name: ensure mysql-devel is installed
+  yum: name='ftp://ftp.iij.ad.jp/pub/db/mysql/Downloads/MySQL-5.6/MySQL-devel-5.6.13-1.el6.x86_64.rpm' state=present
+  tags: mysql
+
+- name: ensure mysql-client is installed
+  yum: name='ftp://ftp.iij.ad.jp/pub/db/mysql/Downloads/MySQL-5.6/MySQL-client-5.6.13-1.el6.x86_64.rpm' state=present
+  tags: mysql
+
+- name: ensure mysql-server is installed
+  yum: name='ftp://ftp.iij.ad.jp/pub/db/mysql/Downloads/MySQL-5.6/MySQL-server-5.6.13-1.el6.x86_64.rpm' state=present
+  notify:
+    - restart mysql
+  tags: mysql
+
+- name: ensure mysql-python is installed
   yum: pkg=MySQL-python state=installed
   tags: mysql
 
-- name: be sure mysqld is running and enabled
-  service: name=mysqld state=running enabled=yes
+- name: ensure mysql is running and enabled
+  service: name=mysql state=running enabled=yes
+  tags: mysql
+
+- name: attempt to login
+  shell: mysql -uroot -e 'select 1' > /dev/null 2>&1; echo $?
+  register: mysql_login_result
+  tags: mysql
+
+- name: fetch default mysql root password
+  shell: 'cat /root/.mysql_secret | sed -e "s/^.*: \(.*\)$/\1/g"'
+  register: default_mysql_password
+  when: mysql_login_result.stdout != '0'
+  tags: mysql
+
+- name: ensure root password for mysql is blank
+  shell: mysqladmin password -uroot -p${default_mysql_password.stdout} ''
+  when: mysql_login_result.stdout != '0'
+  tags: mysql
+
+- name: ensure mysql is configured
+  template: src=my.cnf.j2 dest=/usr/my.cnf owner=root group=root
+  notify:
+    - restart mysql
   tags: mysql
 
 - name: Create database
